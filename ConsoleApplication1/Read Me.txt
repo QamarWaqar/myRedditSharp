@@ -1,0 +1,18 @@
+﻿> Register App -> you will get 1. Client ID 2. Client Secret
+> That app will also have a name registed on the PLATFORM you are working on.
+> First of all make a Link, that user will goto in browser that will take user
+  to PLATFORM's website and present it that usermade app's name and permissions
+  that it seek and do you want to allow it to access or not? 
+> If yes then it takes it to the "Redirect Uri" that you have registered while
+  creating the App on the PLATFORM.
+> That Redirect Uri link will take you that redirect uri link plus some added
+  query strings to it. One of the query string variable will be "code" 
+  [that was used by both reddit and twitch but in case of twitch the 'code'
+   didnt work but second method in which one of query string variable was 
+   'token' worked. Plus Twitch apps's token or code are for ever, they dont
+   need to be refreshed nor they are either temporary or permanent, whose both 
+   lifetime is 1 hour, but permanent can be refreshed, as this all was present in
+   reddit OAuth implementation.]
+> Use that 'code' value in the next call to PLATFORM API with 'code' value in 
+  the 'headers' of that call. This will eventally return you a 'token' hopefully
+  for an hour, but permanent for twitch.
